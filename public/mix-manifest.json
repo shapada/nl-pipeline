@@ -1,0 +1,14 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/coreui.min.js": "/js/coreui.min.js",
+    "/js/buttons.bootstrap4.min.js": "/js/buttons.bootstrap4.min.js",
+    "/css/buttons.bootstrap4.min.css": "/css/buttons.bootstrap4.min.css",
+    "/js/select.bootstrap4.min.js": "/js/select.bootstrap4.min.js",
+    "/css/select.bootstrap4.min.css": "/css/select.bootstrap4.min.css",
+    "/js/select2.min.js": "/js/select2.min.js",
+    "/css/select2.min.css": "/css/select2.min.css",
+    "/css/jquery.datetimepicker.min.css": "/css/jquery.datetimepicker.min.css",
+    "/js/jquery.datetimepicker.full.min.js": "/js/jquery.datetimepicker.full.min.js",
+    "/js/moment.min.js": "/js/moment.min.js"
+}
