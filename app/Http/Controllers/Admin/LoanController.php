@@ -38,13 +38,11 @@ class LoanController extends Controller
         $form_date = $required->closing_date;
         $db_date = Carbon::parse('2021-03-01');
 
-        var_dump( $form_date ); die();
+        ( $form_date ); die();
 
         $form_date = Carbon::createFromFormat('m-d-Y', $closing_date );
 
         $form_date_string = $form_date->format('Y-m-d');
-
-        $form_date->gt($database_date);
 
         $loan = Loan::create($request->all());
         return redirect()->route('admin.loans.index');
