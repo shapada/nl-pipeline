@@ -1,4 +1,3 @@
-<div id="sidebar" class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show">
 
     <div class="c-sidebar-brand d-md-down-none d-flex align-items-center p-y">
         <a class="c-sidebar-brand-full h4 min-w-full pt-3" href="#">
@@ -113,4 +112,5 @@
         </li>
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
+
 </div>

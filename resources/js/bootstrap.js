@@ -7,11 +7,19 @@ window._ = require('lodash');
  */
 
 try {
+    var $jq = require('jquery');
     window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
+    window.$ = window.jQuery = $jq;
 
     require('bootstrap');
 
+    require('datatables.net-bs4/js/dataTables.bootstrap4.js');
+    require('datatables.net-buttons/js/dataTables.buttons.js');
+    require('datatables.net-buttons/js/buttons.print.js');
+    require('datatables.net-buttons/js/buttons.html5.js');
+    require('datatables.net-select/js/dataTables.select.js');
+
+    require('jquery-datetimepicker/build/jquery.datetimepicker.full.js');
 } catch (e) {}
 
 /**

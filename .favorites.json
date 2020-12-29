@@ -1,0 +1,18 @@
+[
+    {
+        "type": "Group",
+        "name": "coreui",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "9kXfRQSVn3PaGCAu"
+    },
+    {
+        "type": "Directory",
+        "name": "/var/www/nl-pipeline/node_modules/@coreui",
+        "parent_id": "9kXfRQSVn3PaGCAu",
+        "workspaceRoot": "/var/www/nl-pipeline",
+        "workspacePath": "node_modules/@coreui",
+        "id": "unUMZsFyPCHfNOAV"
+    }
+]

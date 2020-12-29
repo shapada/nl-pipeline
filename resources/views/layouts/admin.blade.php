@@ -1,34 +1,36 @@
-@include('common.header')
-@include('common.sidebar')
-<div class="c-wrapper">
-    @include('common.navbar')
-    <div class="c-body">
-        <main id="app" class="c-main">
-            <div class="container-fluid">
-                @if(session('message'))
-                    <div class="row mb-2">
-                        <div class="col-lg-12">
-                            <div class="alert alert-success" role="alert">{{ session('message') }}</div>
-                        </div>
-                    </div>
-                @endif
-                @if($errors->count() > 0)
-                    <div class="alert alert-danger">
-                        <ul class="list-unstyled">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+<!DOCTYPE html>
+<html>
 
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ trans('panel.site_title') }}</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    @stack('styles')
+</head>
+
+<body class="c-app">
+    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+
+        @include('common.sidebar')
+
+        @include('common.navbar')
+
+        <div class="c-body">
+
+            <main class="c-main">
 
                 @yield('content')
-        </main>
-        <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
+
+            </main>
+            @include('common.footer')
+        </div>
     </div>
-</div>
-@include('common.footer')
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    @stack('scripts')
+
+</html>
