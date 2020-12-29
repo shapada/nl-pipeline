@@ -131,7 +131,26 @@
 
     } 
 
-    .card-header h4 {
-        padding-top: .5em;
-        display: inline-block;
+    .card-header {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
     }
+
+.select-checkbox {
+    width: 50px;
+}
+
+.card {
+    .card-header {
+        background: $white;
+
+    }
+
+    .card-body {
+        table thead {
+            color: $white;
+            background-color: #3c4b64!important;
+        }
+    }
+}

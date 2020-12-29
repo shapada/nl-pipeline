@@ -16,7 +16,6 @@ class RolesApiController extends Controller
     public function index()
     {
         abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         return new RoleResource(Role::with(['permissions'])->get());
     }
 

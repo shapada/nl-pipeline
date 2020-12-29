@@ -1,0 +1,9 @@
+{
+    "favorites.resources": [
+        "resources/views/admin/loans/index.blade.php",
+        "resources/views/layouts/admin.blade.php",
+        "resources/views/common/navbar.blade.php",
+        "resources/views/admin/loans/edit.blade.php",
+        "resources/views/admin/loans/create.blade.php"
+    ]
+}
