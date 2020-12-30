@@ -4,6 +4,12 @@
         "resources/views/layouts/admin.blade.php",
         "resources/views/common/navbar.blade.php",
         "resources/views/admin/loans/edit.blade.php",
-        "resources/views/admin/loans/create.blade.php"
+        "resources/views/admin/loans/create.blade.php",
+        "resources/js/src/datatables.js",
+        "resources/js/components/Datatable/Datatable.vue",
+        "resources/js/components/Datatable/Pagination.vue",
+        "resources/js/components/Datatable/Table.vue",
+        "resources/js/components/Loans/Loans.vue",
+        "resources/js/app.js"
     ]
 }

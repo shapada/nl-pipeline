@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\LoanController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PermissionsController;
 use App\Http\Controllers\Admin\RolesController;
-use App\Http\Controllers\Admin\Users;
+use App\Http\Controllers\Admin\UsersController;
 
 
 // Route::group(['middleware' => 'web'], function () {
@@ -26,7 +26,6 @@ use App\Http\Controllers\Admin\Users;
 // });
 
 Auth::routes(['register'=>false]);
-
 
 Route::redirect('/', '/login');
 
@@ -37,8 +36,6 @@ Route::get('/home', function () {
 
     return redirect()->route('admin.home');
 });
-
-Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/', 'App\Http\Controllers\Admin\HomeController@index' )->name('home');
@@ -72,4 +69,3 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
             Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
         }
     });
-

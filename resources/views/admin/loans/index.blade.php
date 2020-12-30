@@ -15,7 +15,7 @@
                         @endcan
                     </div>
                     <div class="card-body">
-                        <datatable></datatable>
+                        {{-- <loans-datatable></loans-datatable> --}}
                         <table class=" table table-bordered table-sm table-striped table-hover datatable datatable-Loan">
                             <thead>
                                 <tr>
@@ -112,9 +112,16 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('js/buttons.bootstrap4.min.js') }}"></script>
     <script>
         $(function() {
             $('table').DataTable({
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
                 columnDefs: [{
                     orderable: false,
                     className: 'select-checkbox',

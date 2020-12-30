@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Service;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 
 class LoanController extends Controller
@@ -34,15 +35,6 @@ class LoanController extends Controller
 
     public function store(StoreLoanRequest $request)
     {
-
-        $form_date = $required->closing_date;
-        $db_date = Carbon::parse('2021-03-01');
-
-        ( $form_date ); die();
-
-        $form_date = Carbon::createFromFormat('m-d-Y', $closing_date );
-
-        $form_date_string = $form_date->format('Y-m-d');
 
         $loan = Loan::create($request->all());
         return redirect()->route('admin.loans.index');

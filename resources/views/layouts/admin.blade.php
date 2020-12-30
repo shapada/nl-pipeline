@@ -28,9 +28,9 @@
 
         @include('common.navbar')
 
-        <div id="app" class="c-body">
+        <div class="c-body">
 
-            <main class="c-main">
+            <main id="app" class="c-main">
 
                 @yield('content')
 

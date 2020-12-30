@@ -9,9 +9,9 @@ require('./src/datetimepicker.js');
 import Vue from 'vue'
 
 //Main pages
-import DataTable from './components/Datatable/Datatable.vue'
+import LoansDatatable from './components/Loans/LoansDatatable.vue'
 
 const app = new Vue({
     el: '#app',
-    components: { DataTable }
+    components: { 'loans-datatable': LoansDatatable }
 });

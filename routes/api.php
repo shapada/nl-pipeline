@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Admin\LoanApiController;
+use App\Http\Controllers\Api\V1\Admin\PermissionsApiController;
+use App\Http\Controllers\Api\V1\Admin\RolesApiController;
+use App\Http\Controllers\Api\V1\Admin\UsersApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,16 +22,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:api']], function () {
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'App\Http\Controllers\Api\V1\Admin', 'middleware' => ['auth:api']], function () {
     // Permissions
-    Route::apiResource('permissions', 'PermissionsApiController');
+    Route::apiResource('permissions', PermissionsApiController::class);
 
     // Roles
-    Route::apiResource('roles', Roles::class );
+    Route::apiResource('roles', RolesApiController::class );
 
     // Users
     Route::apiResource('users', UsersApiController::class );
 
     // Loans
-    Route::apiResource('loans', LoanApiController::class );
+    Route::apiResource('loans', \App\Http\Controllers\Api\V1\Admin\LoanApiController::class );
 });
+
+ // Permissions
+    Route::apiResource('permissions', PermissionsApiController::class);
+
+    // Roles
+    Route::apiResource('roles',  RolesApiController::class );
+
+    // Users
+    Route::apiResource('users',  UsersApiController::class );
+
+    // Loans
+    Route::apiResource('loans', LoanApiController::class );

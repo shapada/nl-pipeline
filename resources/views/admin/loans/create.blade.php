@@ -48,7 +48,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="contract_price">{{ trans('cruds.loan.fields.contract_price') }}</label>
-                                                <input class="form-control {{ $errors->has('contract_price') ? 'is-invalid' : '' }}" type="number" name="contract_price" id="contract_price" value="{{ old('contract_price', '') }}" step="0.01">
+
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+
+                                                    </div>
+                                                    <input class="form-control {{ $errors->has('contract_price') ? 'is-invalid' : '' }}" type="number" name="contract_price" id="contract_price" value="{{ old('contract_price', '') }}" step="0.01">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">.00</span>
+                                                    </div>
+                                                </div>
                                                 @if ($errors->has('contract_price'))
                                                     <div class="invalid-feedback">
                                                         {{ $errors->first('contract_price') }}
@@ -88,7 +98,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="loan_amount">{{ trans('cruds.loan.fields.loan_amount') }}</label>
-                                                <input class="form-control {{ $errors->has('loan_amount') ? 'is-invalid' : '' }}" type="number" name="loan_amount" id="loan_amount" value="{{ old('loan_amount', '') }}" step="0.01">
+
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input class="form-control {{ $errors->has('loan_amount') ? 'is-invalid' : '' }}" type="number" name="loan_amount" id="loan_amount" value="{{ old('loan_amount', '') }}" step="0.01">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">.00</span>
+                                                    </div>
+                                                </div>
+
                                                 @if ($errors->has('loan_amount'))
                                                     <div class="invalid-feedback">
                                                         {{ $errors->first('loan_amount') }}
@@ -221,7 +241,13 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="interest_rate">{{ trans('cruds.loan.fields.interest_rate') }}</label>
-                                                <input class="form-control {{ $errors->has('interest_rate') ? 'is-invalid' : '' }}" type="text" name="interest_rate" id="interest_rate" value="{{ old('interest_rate', '') }}">
+                                                <div class="input-group">
+                                                    <input class="form-control {{ $errors->has('interest_rate') ? 'is-invalid' : '' }}" type="text" name="interest_rate" id="interest_rate" value="{{ old('interest_rate', '') }}">
+
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
+                                                </div>
                                                 @if ($errors->has('interest_rate'))
                                                     <div class="invalid-feedback">
                                                         {{ $errors->first('interest_rate') }}
@@ -232,7 +258,7 @@
                                         </div>
                                         <div class="col d-flex align-items-center">
                                             <div class="form-group pt-4">
-                                                <div class="form-check {{ $errors->has('interest_rate_locked') ? 'is-invalid' : '' }}">
+                                                <div class="form-check form-check-inline {{ $errors->has('interest_rate_locked') ? 'is-invalid' : '' }}">
                                                     <input type="hidden" name="interest_rate_locked" value="0">
                                                     <input class="form-check-input" type="checkbox" name="interest_rate_locked" id="interest_rate_locked" value="1" {{ old('interest_rate_locked', 0) == 1 ? 'checked' : '' }} onchange="interestRateLockValueChanged()">
                                                     <label class="form-check-label" for="interest_rate_locked">{{ trans('cruds.loan.fields.interest_rate_locked') }}</label>

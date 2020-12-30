@@ -99,7 +99,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="loan_amount">{{ trans('cruds.loan.fields.loan_amount') }}</label>
-                                                <input class="form-control {{ $errors->has('loan_amount') ? 'is-invalid' : '' }}" type="number" name="loan_amount" id="loan_amount" value="{{ old('loan_amount', $loan->loan_amount) }}" step="0.01">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                        <input class="form-control {{ $errors->has('loan_amount') ? 'is-invalid' : '' }}" type="number" name="loan_amount" id="loan_amount" value="{{ old('loan_amount', $loan->loan_amount) }}" step="0.01">
+
+                                                    </div>
+                                                </div>
                                                 @if ($errors->has('loan_amount'))
                                                     <div class="invalid-feedback">
                                                         {{ $errors->first('loan_amount') }}
@@ -110,7 +116,12 @@
 
                                             <div class="form-group">
                                                 <label for="contract_price">{{ trans('cruds.loan.fields.contract_price') }}</label>
-                                                <input class="form-control {{ $errors->has('contract_price') ? 'is-invalid' : '' }}" type="number" name="contract_price" id="contract_price" value="{{ old('contract_price', $loan->contract_price) }}" step="0.01">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input class="form-control {{ $errors->has('contract_price') ? 'is-invalid' : '' }}" type="number" name="contract_price" id="contract_price" value="{{ old('contract_price', $loan->contract_price) }}" step="0.01">
+                                                </div>
                                                 @if ($errors->has('contract_price'))
                                                     <div class="invalid-feedback">
                                                         {{ $errors->first('contract_price') }}
