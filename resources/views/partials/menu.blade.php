@@ -1,12 +1,12 @@
-<div id="sidebar" class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show">
+<div id="sidebar" class="c-sidebar c-sidebar-light c-sidebar-fixed c-sidebar-lg-show bg-white">
 
-    <div class="c-sidebar-brand d-md-down-none d-flex align-items-center p-y">
-        <a class="c-sidebar-brand-full h4 min-w-full pt-3" href="#">
+    <div class="c-sidebar-brand d-md-down-none d-flex align-items-center bg-white">
+        <a class="c-sidebar-brand-full" href="#">
             <img src="{{ url('img/foresight-bank.svg') }}" style="width: 200px;">
         </a>
     </div>
 
-    <ul class="c-sidebar-nav">
+    <ul class="c-sidebar-nav text-dark">
         <li class="c-sidebar-nav-item">
             <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">

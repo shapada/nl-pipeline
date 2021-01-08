@@ -35,15 +35,3 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'App\Http\Control
     // Loans
     Route::apiResource('loans', \App\Http\Controllers\Api\V1\Admin\LoanApiController::class );
 });
-
- // Permissions
-    Route::apiResource('permissions', PermissionsApiController::class);
-
-    // Roles
-    Route::apiResource('roles',  RolesApiController::class );
-
-    // Users
-    Route::apiResource('users',  UsersApiController::class );
-
-    // Loans
-    Route::apiResource('loans', LoanApiController::class );

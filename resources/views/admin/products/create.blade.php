@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="co">
+        <div class="card">
     <div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.product.title_singular') }}
     </div>
@@ -27,6 +31,11 @@
         </form>
     </div>
 </div>
+    </div>
+</div>
+
+</div>
+
 
 
 

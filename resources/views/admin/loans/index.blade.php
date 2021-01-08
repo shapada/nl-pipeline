@@ -16,12 +16,13 @@
                     </div>
                     <div class="card-body">
                         {{-- <loans-datatable></loans-datatable> --}}
-                        <table class=" table table-bordered table-sm table-striped table-hover datatable datatable-Loan">
+                        <table class="table table-bordered table-sm table-striped table-hover datatable datatable-Loan">
                             <thead>
-                                <tr>
-                                    <th>
+                                <tr> 
+                                     
+                        <th width="10">
 
-                                    </th>
+                        </th>
                                     <th>
                                         {{ trans('cruds.loan.fields.loan_number') }}
                                     </th>
@@ -66,6 +67,7 @@
                                             {{ $loan->title_company ?? '' }}
                                         </td>
                                         <td>
+                                            {{ $loan->title_company ?? '' }}
                                             @if (!empty($loan->appraisal_ordered))
                                                 <span class="badge badge-primary">Appraisal</span>
                                             @endif
@@ -80,23 +82,25 @@
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-xs btn-light btn-outline-dark" href="{{ route('admin.loans.show', $loan->id) }}">
-                                                <i class="fa fa-eye"></i>
-
+                                           @can('loan_show')
+                                            <a class="btn btn-xs btn-primary" href="{{ route('admin.loans.show', $loan->id) }}">
+                                                {{ trans('global.view') }}
                                             </a>
+                                            @endcan
 
-                                            <a class="btn btn-xs btn-light btn-outline-dark" href="{{ route('admin.loans.edit', $loan->id) }}">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
+                                            @can('loan_edit')
+                                                <a class="btn btn-xs btn-info" href="{{ route('admin.loans.edit', $loan->id) }}">
+                                                    {{ trans('global.edit') }}
+                                                </a>
+                                            @endcan
 
-
-                                            <form action="{{ route('admin.loans.destroy', $loan->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit" class="btn btn-xs btn-light btn-outline-dark">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
+                                @can('loan_delete')
+                                    <form action="{{ route('admin.loans.destroy', $loan->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -111,38 +115,59 @@
 
 @endsection
 
-@push('scripts')
-    <script src="{{ asset('js/buttons.bootstrap4.min.js') }}"></script>
-    <script>
-        $(function() {
-            $('table').DataTable({
-                buttons: [
-                    'copyHtml5',
-                    'excelHtml5',
-                    'csvHtml5',
-                    'pdfHtml5'
-                ],
-                columnDefs: [{
-                    orderable: false,
-                    className: 'select-checkbox',
-                    targets: 0
-                }],
-                select: {
-                    style: 'multi',
-                    selector: 'td:first-child'
-                },
-                order: [
-                    [1, 'asc']
-                ],
-                language: {
-                    search: ''
-                },
-                "searching": true, // Search Box will Be Disabled
-                "ordering": true, // Ordering (Sorting on Each Column)will Be Disabled
-                "info": true, // Will show "1 to n of n entries" Text at bottom
-                "lengthChange": false // Will Disabled Record number per page
-            });
-        })
+@section('scripts')
+@parent
+<script>
+    $(function () {
+  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
-    </script>
-@endpush
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButton = {
+    text: deleteButtonTrans,
+    url: "{{ route('admin.loans.massDestroy') }}",
+    className: 'btn-danger',
+    action: function (e, dt, node, config) {
+      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
+          return $(entry).data('entry-id')
+      });
+
+      if (ids.length === 0) {
+        alert('{{ trans('global.datatables.zero_selected') }}')
+
+        return
+      }
+
+      if (confirm('{{ trans('global.areYouSure') }}')) {
+        $.ajax({
+          headers: {'x-csrf-token': _token},
+          method: 'POST',
+          url: config.url,
+          data: { ids: ids, _method: 'DELETE' }})
+          .done(function () { location.reload() })
+      }
+    }
+  }
+  dtButtons.push(deleteButton)
+
+  $.extend(true, $.fn.dataTable.defaults, {
+    orderCellsTop: true,
+    order: [[ 1, 'desc' ]],
+    pageLength: 100,
+  });
+  let table = $('.datatable-Loan:not(.ajaxTable)').DataTable({
+      buttons: dtButtons,
+      columnDefs: [ {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+        } ],
+    })
+  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+      $($.fn.dataTable.tables(true)).DataTable()
+          .columns.adjust();
+  });
+
+})
+
+</script>
+@endsection

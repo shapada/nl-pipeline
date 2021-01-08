@@ -2,6 +2,46 @@ ck-editor__editable,
 textarea {
     min-height: 150px;
 }
+.c-sidebar.c-sidebar-light .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
+.c-sidebar.c-sidebar-light .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+    color: #000;
+}
+.c-sidebar.c-sidebar-light .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle:hover, .c-sidebar.c-sidebar-light .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link:hover {
+    color: #fff;
+}
+#sidebar.c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+#sidebr.c-sidebar .c-sidebar-nav-link:hover,
+#sidebar.c-sidebar.c-sidebar-light .c-sidebar-nav-dropdown-toggle:hover,
+#sidebar.c-sidebar.c-sidebar-light .c-sidebar-nav-link:hover {
+    background: rgb(141, 24, 60);
+}
+
+.c-sidebar.c-sidebar-light .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
+.c-sidebar.c-sidebar-light .c-sidebar-nav-link.c-active .c-sidebar-nav-icon {
+    color:rgb(141, 24, 60);
+}
+
+.c-sidebar-nav-dropdown-items {
+    background: rgba(0, 0, 21, .05);
+}
+
+.c-sidebar.c-sidebar-light .c-active.c-sidebar-nav-dropdown-toggle,
+.c-sidebar.c-sidebar-light .c-sidebar-nav-link.c-active {
+    background: #fff;
+}
+
+.c-sidebar-nav-link.c-active {
+    border-left: 5px solid rgb(141, 24, 60);
+    background: none;
+}
+
+.c-sidebar.c-sidebar-light .c-sidebar-nav-dropdown.c-show {
+    background-color: #fff;
+}
+
+ .c-sidebar.c-sidebar-light .c-sidebar-nav-link.c-active {
+     background: none;
+ }
 
 .datatable {
     width: 100% !important;

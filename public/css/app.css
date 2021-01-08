@@ -34129,6 +34129,10 @@ body {
   color: #000;
 }
 
+.c-sidebar.c-sidebar-light .c-sidebar-brand {
+  background: #000;
+}
+
 .click-file {
   cursor: pointer;
 }

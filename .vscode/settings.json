@@ -11,5 +11,10 @@
         "resources/js/components/Datatable/Table.vue",
         "resources/js/components/Loans/Loans.vue",
         "resources/js/app.js"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#23246C",
+        "titleBar.activeBackground": "#313297",
+        "titleBar.activeForeground": "#FCFCFE"
+    }
 }
